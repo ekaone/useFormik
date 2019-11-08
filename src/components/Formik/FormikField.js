@@ -1,14 +1,19 @@
 import React from 'react';
-import { Formik, Field, Form, useField } from 'formik';
+import { Formik, Field, Form, useField, FieldArray } from 'formik';
 import { 
   TextField,
   Button,
   Checkbox,
   Radio,
-  FormControlLabel  
+  FormControlLabel,
+  Select,  
+  MenuItem
 } from '@material-ui/core'
 import * as yup from "yup";
 
+const validationSchema = yup.object({
+  middleName: yup.string().required().max(10)
+}) 
 
 const MyRadio = ({ label, ...props }) => {
   const [field] = useField(props)
@@ -37,17 +42,19 @@ const Basic = () => (
         lastName: '',
         isTall: false,
         cookies: [],
-        yogurt: ""  
+        yogurt: "",
+        pets: [{ type: "dog", name: "eka", id: "" + Math.random() }]  
       }}
-      validate={values => {
-        const errors = {}
+      validationSchema = {validationSchema}
+      // validate={values => {
+      //   const errors = {}
         
-        if(values.middleName.includes("bob")) {
-          errors.middleName = "no bob"
-        }
+      //   if(values.middleName.includes("bob")) {
+      //     errors.middleName = "no bob"
+      //   }
 
-        return errors
-      }}
+      //   return errors
+      // }}
       onSubmit={(data, { setSubmitting })=> {
         setSubmitting(true)
         // make aynsc call
@@ -85,13 +92,38 @@ const Basic = () => (
             <Field name="yogurt" value="banana" type="radio" as={Radio} />
             <MyRadio name="yogurt" type="radio" value="blueberry" label="Blueberry" />
           <div>
+            <FieldArray name="pets">
+              {arrayHelpers => (
+                <div>
+                  {values.pets.map((pet, index) => {
+
+                    return (
+                      <div key={pet.name}>
+                        <MyTextField placeholder="pet name" name={`pets.${index}.name`} />
+                        <Field name={`pets.${index}.type`} type="select" as={Select}>
+                          <MenuItem value="dog">Dog</MenuItem>
+                          <MenuItem value="bird">Bird</MenuItem>
+                          <MenuItem value="frog">Frog</MenuItem>
+                        </Field>
+                      </div>
+                    )
+
+                  })}
+                </div>
+              )}  
+            </FieldArray>  
+          </div>
+          <div>
             <Button disabled={isSubmitting} type='submit'>Submit</Button>
           </div>
-          <pre>{JSON.stringify({
-            values: values,
-            errors: errors,
-            cookiesLength: values.cookies.length
-          }, null, 2)}</pre>
+          <pre>
+            {
+            JSON.stringify({
+              values: values,
+              errors: errors,
+              cookiesLength: values.cookies.length
+            }, null, 2)}
+          </pre>
         </Form>
       )}
     </Formik>
