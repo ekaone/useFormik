@@ -3,7 +3,8 @@ import { Formik, Field, Form } from 'formik';
 import { 
   TextField,
   Button,
-  Checkbox 
+  Checkbox,
+  Radio 
 } from '@material-ui/core'
 import * as yup from "yup";
 
@@ -15,7 +16,8 @@ const Basic = () => (
         firstName: '', 
         lastName: '',
         isTall: false,
-        cookies: [] 
+        cookies: [],
+        yogurt: ""  
       }}
       onSubmit={(data, { setSubmitting })=> {
         setSubmitting(true)
@@ -40,11 +42,15 @@ const Basic = () => (
             as={TextField}
           />
           </div>
-          <Field name="isTall" type="checkbox" as={Checkbox} />
+          <Field name="isTall" type="checkbox" as={Checkbox} /> Option goodies
           <div>Cookies: </div>
           <Field name="cookies" value="abc" type="checkbox" as={Checkbox} />
           <Field name="cookies" value="123" type="checkbox" as={Checkbox} />
           <Field name="cookies" value="jkl" type="checkbox" as={Checkbox} />
+          <div>Yogurt</div>
+            <Field name="yogurt" value="apple" type="radio" as={Radio} />
+            <Field name="yogurt" value="pine apple" type="radio" as={Radio} />
+            <Field name="yogurt" value="banana" type="radio" as={Radio} />
           <div>
             <Button disabled={isSubmitting} type='submit'>Submit</Button>
           </div>
