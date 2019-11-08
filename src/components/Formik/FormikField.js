@@ -1,8 +1,9 @@
 import React from 'react';
-import { Formik, Field } from 'formik';
+import { Formik, Field, Form } from 'formik';
 import { 
   TextField,
-  Button 
+  Button,
+  Checkbox 
 } from '@material-ui/core'
 import * as yup from "yup";
 
@@ -10,7 +11,12 @@ import * as yup from "yup";
 const Basic = () => (
   <>
     <Formik
-      initialValues={{ firstName: '', lastName: '' }}
+      initialValues={{ 
+        firstName: '', 
+        lastName: '',
+        isTall: false,
+        cookies: [] 
+      }}
       onSubmit={(data, { setSubmitting })=> {
         setSubmitting(true)
         // make aynsc call
@@ -18,8 +24,8 @@ const Basic = () => (
         setSubmitting(false)
       }}
     >
-      {({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
-        <form onSubmit={handleSubmit}>
+      {({ values, isSubmitting }) => (
+        <Form>
           <Field 
             placeholder='First name'
             name='firstName'
@@ -34,11 +40,19 @@ const Basic = () => (
             as={TextField}
           />
           </div>
+          <Field name="isTall" type="checkbox" as={Checkbox} />
+          <div>Cookies: </div>
+          <Field name="cookies" value="abc" type="checkbox" as={Checkbox} />
+          <Field name="cookies" value="123" type="checkbox" as={Checkbox} />
+          <Field name="cookies" value="jkl" type="checkbox" as={Checkbox} />
           <div>
             <Button disabled={isSubmitting} type='submit'>Submit</Button>
           </div>
-          <pre>{JSON.stringify(values, null, 2)}</pre>
-        </form>
+          <pre>{JSON.stringify({
+            values: values,
+            cookiesLength: values.cookies.length
+          }, null, 2)}</pre>
+        </Form>
       )}
     </Formik>
   </>
