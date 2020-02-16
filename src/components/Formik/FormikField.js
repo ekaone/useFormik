@@ -98,7 +98,7 @@ const Basic = () => (
                   {values.pets.map((pet, index) => {
 
                     return (
-                      <div key={pet.name}>
+                      <div key={pet.id}>
                         <MyTextField placeholder="pet name" name={`pets.${index}.name`} />
                         <Field name={`pets.${index}.type`} type="select" as={Select}>
                           <MenuItem value="dog">Dog</MenuItem>
@@ -107,7 +107,6 @@ const Basic = () => (
                         </Field>
                       </div>
                     )
-
                   })}
                 </div>
               )}  
