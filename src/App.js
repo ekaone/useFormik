@@ -1,13 +1,14 @@
 import React from 'react';
+
 import {
-  Formik
+  Formik,
 } from './components'
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Formik />
-    </div>
+    </>
   );
 }
 
