@@ -1,13 +1,28 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import {
-  Formik,
-} from './components'
+  FormikSignIn,
+  FormikProject,
+  FormikTextField,
+  FormikField,
+  LandingPage,
+  Navigation
+} from "./components";
 
 function App() {
   return (
     <>
-      <Formik />
+      <Router>
+        <Navigation />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/formik-project" component={FormikProject} />
+          <Route path="/formik-field" component={FormikField} />
+          <Route path="/formik-textfield" component={FormikTextField} />
+          <Route path="/formik-signin" component={FormikSignIn} />
+        </Switch>
+      </Router>
     </>
   );
 }
