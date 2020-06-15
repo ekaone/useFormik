@@ -156,7 +156,7 @@ export default function FormikProject() {
               </Formik>
             </Paper>
           </Grid>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={12} sm={6}>
             <ViewOutput rows={projects} />
           </Grid>
         </Grid>

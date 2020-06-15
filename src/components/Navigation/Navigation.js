@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
+// MUI
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import Button from "@material-ui/core/Button";
@@ -9,7 +12,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { routes } from "./routes";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   list: {
     width: 250
   },
@@ -19,8 +22,13 @@ const useStyles = makeStyles({
   menu: {
     textAlign: "right",
     paddingBottom: "10px"
+  },
+  fab: {
+    position: "absolute",
+    bottom: theme.spacing(2),
+    right: theme.spacing(2)
   }
-});
+}));
 
 export default function Navigation() {
   const classes = useStyles();
@@ -62,7 +70,26 @@ export default function Navigation() {
   return (
     <div className={classes.menu}>
       <React.Fragment key={"top"}>
-        <Button onClick={toggleDrawer("top", true)}>{"Menu"}</Button>
+        {/* <Button
+          onClick={toggleDrawer("top", true)}
+          variant="contained"
+          color="secondary"
+        >
+          <span role="img" aria-label="menu" style={{ marginRight: "10px" }}>
+            🔎
+          </span>
+          {"Menu"}
+        </Button> */}
+        <Fab
+          className={classes.fab}
+          color="secondary"
+          aria-label="add"
+          onClick={toggleDrawer("top", true)}
+        >
+          <span role="img" aria-label="menu">
+            🔎
+          </span>
+        </Fab>
         <SwipeableDrawer
           anchor={"top"}
           open={state["top"]}

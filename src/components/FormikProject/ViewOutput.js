@@ -1,4 +1,5 @@
 import React from "react";
+// MUI
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -10,7 +11,7 @@ import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 450
+    minWidth: 400
   }
 });
 
@@ -18,27 +19,33 @@ export default function ViewOutput(props) {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="right">Name&nbsp;(g)</TableCell>
-            <TableCell align="right">Value&nbsp;($)</TableCell>
-            <TableCell align="right">Duration&nbsp;(days)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.rows.map(row => (
-            <TableRow key={row.projectName}>
-              <TableCell component="th" scope="row">
-                {row.projectName}
-              </TableCell>
-              <TableCell align="right">{row.projectValue}</TableCell>
-              <TableCell align="right">{row.projectDuration}</TableCell>
+    <div>
+      <TableContainer component={Paper}>
+        <Table
+          className={classes.table}
+          size="small"
+          aria-label="a dense table"
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell align="right">Name&nbsp;(g)</TableCell>
+              <TableCell align="right">Value&nbsp;($)</TableCell>
+              <TableCell align="right">Duration&nbsp;(days)</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {props.rows.map(row => (
+              <TableRow key={row.projectName}>
+                <TableCell component="th" scope="row">
+                  {row.projectName}
+                </TableCell>
+                <TableCell align="right">{row.projectValue}</TableCell>
+                <TableCell align="right">{row.projectDuration}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }
