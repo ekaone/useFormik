@@ -17,7 +17,8 @@ const useStyles = makeStyles({
     width: "auto"
   },
   menu: {
-    textAlign: "right"
+    textAlign: "right",
+    paddingBottom: "10px"
   }
 });
 
@@ -61,7 +62,7 @@ export default function Navigation() {
   return (
     <div className={classes.menu}>
       <React.Fragment key={"top"}>
-        <Button onClick={toggleDrawer("top", true)}>{"Top"}</Button>
+        <Button onClick={toggleDrawer("top", true)}>{"Menu"}</Button>
         <SwipeableDrawer
           anchor={"top"}
           open={state["top"]}
