@@ -6,6 +6,7 @@ import {
   FormikProject,
   FormikTextField,
   FormikField,
+  FormikCheckout,
   LandingPage,
   Navigation
 } from "./components";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/formik-field" component={FormikField} />
           <Route path="/formik-textfield" component={FormikTextField} />
           <Route path="/formik-signin" component={FormikSignIn} />
+          <Route path="/formik-checkout" component={FormikCheckout} />
         </Switch>
       </Router>
     </>

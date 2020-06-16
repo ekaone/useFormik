@@ -67,7 +67,7 @@ export default function SignIn2() {
           validate={values => {
             const errors = {};
             if (!values.email) {
-              errors.email = "Required";
+              errors.email = "Required Email";
             } else if (
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
@@ -95,7 +95,7 @@ export default function SignIn2() {
             isSubmitting
             /* and other goodies */
           }) => (
-            <Form className={classes.form} noValidate>
+            <Form onSubmit={handleSubmit} className={classes.form} noValidate>
               <TextField
                 value={values.email}
                 onChange={handleChange}
