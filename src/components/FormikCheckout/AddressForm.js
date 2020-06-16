@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
 // Formik
 import { Formik, Field, Form } from "formik";
 // YUP
@@ -43,15 +45,12 @@ export default function AddressForm() {
             saveAddress: []
           }}
           validationSchema={validationSchema}
-          onSubmit={(values, { setSubmitting }) => {
-            setSubmitting(true);
-            // setAddress(previousState => {
-            //   return [...previousState, values];
-            // });
-            // aynsc call
-            console.log("Submit: ", values);
-            setSubmitting(false);
-          }}
+          // onSubmit={(values, { setSubmitting }) => {
+          //   setSubmitting(true);
+
+          //   console.log("Submit: ", values);
+          //   setSubmitting(false);
+          // }}
         >
           {({
             values,
@@ -167,8 +166,11 @@ export default function AddressForm() {
                   Use this address for Payment details
                 </Typography>
               </Grid>
-              <br />
-              <pre>{JSON.stringify(values, null, 2)}</pre>
+              <Grid item xs={12}>
+                <SyntaxHighlighter language="json" style={dark}>
+                  {JSON.stringify(values, null, 2)}
+                </SyntaxHighlighter>
+              </Grid>
             </>
           )}
         </Formik>
