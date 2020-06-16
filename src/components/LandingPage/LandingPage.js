@@ -1,5 +1,11 @@
 import React from "react";
+// component
+import Layout from "../Layout";
 
 export default function LandingPage() {
-  return <>Landing Page</>;
+  return (
+    <>
+      <Layout>Landing Page</Layout>
+    </>
+  );
 }

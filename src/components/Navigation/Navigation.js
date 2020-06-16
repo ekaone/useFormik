@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   menu: {
     textAlign: "right",
-    paddingBottom: "10px"
+    paddingBottom: "80px"
   },
   fab: {
     position: "absolute",
