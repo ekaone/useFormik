@@ -5,7 +5,7 @@ Simple how to work Formik form with Material UI kit and use Yup as validation
 ## Screenshot
 
 <p align="center">
-  <a href="https://github.com/ekaone/useFormik">
+  <a href="https://ekaone.github.io/useFormik/">
     <img src="./src/assets/sample.png" alt="Banner" />
   </a>
 </p>
